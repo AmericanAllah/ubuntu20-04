@@ -779,7 +779,7 @@
         dest: /etc/profile
         create: true
         regexp: '^TMOUT='
-        line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
+        line: "export TMOUT={{ ubuntu2004cis_shell_timeout }}"
 
     - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/profile.d/99-tmout.sh"
       lineinfile:
