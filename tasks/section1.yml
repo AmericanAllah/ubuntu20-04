@@ -162,39 +162,7 @@
       - filesystems
       - rule_1.1.1.5
 
-- name: "SCORED | 1.1.1.6 | PATCH | Ensure mounting of squashfs filesystems is disabled"
-  lineinfile:
-      dest: /etc/modprobe.d/CIS.conf
-      regexp: "^(#)?install squashfs(\\s|$)"
-      line: "install squashfs /bin/true"
-      state: present
-      create: true
-  when:
-      - ubuntu2004cis_rule_1_1_1_6
-  tags:
-      - level1
-      - scored
-      - patch
-      - squashfs
-      - filesystems
-      - rule_1.1.1.6
-
-- name: "SCORED | 1.1.1.6 | PATCH | Remove squashfs module"
-  modprobe:
-      name: squashfs
-      state: absent
-  when:
-      - ubuntu2004cis_rule_1_1_1_6
-      - not ubuntu2004cis_skip_for_travis
-  tags:
-      - level1
-      - scored
-      - patch
-      - squashfs
-      - filesystems
-      - rule_1.1.1.6
-
-- name: "SCORED | 1.1.1.7 | PATCH | Ensure mounting of udf filesystems is disabled"
+- name: "SCORED | 1.1.1.6 | PATCH | Ensure mounting of udf filesystems is disabled"
   lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install udf(\\s|$)"
@@ -202,21 +170,21 @@
       state: present
       create: true
   when:
-      - ubuntu2004cis_rule_1_1_1_7
+      - ubuntu2004cis_rule_1_1_1_6
   tags:
       - level1
       - scored
       - patch
       - udf
       - filesystems
-      - rule_1.1.1.7
+      - rule_1.1.1.6
 
-- name: "SCORED | 1.1.1.7 | PATCH | Remove udf module"
+- name: "SCORED | 1.1.1.6 | PATCH | Remove udf module"
   modprobe:
       name: udf
       state: absent
   when:
-      - ubuntu2004cis_rule_1_1_1_7
+      - ubuntu2004cis_rule_1_1_1_6
       - not ubuntu2004cis_skip_for_travis
   tags:
       - level1
@@ -224,9 +192,9 @@
       - patch
       - udf
       - filesystems
-      - rule_1.1.1.7
+      - rule_1.1.1.6
 
-- name: "NOTSCORED | 1.1.1.8 | PATCH | Ensure mounting of FAT filesystems is limited"
+- name: "NOTSCORED | 1.1.1.7 | PATCH | Ensure mounting of FAT filesystems is limited"
   lineinfile:
       dest: /etc/modprobe.d/CIS.conf
       regexp: "^(#)?install vfat(\\s|$)"
@@ -234,21 +202,21 @@
       state: present
       create: true
   when:
-      - ubuntu2004cis_rule_1_1_1_8
+      - ubuntu2004cis_rule_1_1_1_7
   tags:
       - level2
       - notscored
       - patch
       - vfat
       - filesystems
-      - rule_1.1.1.8
+      - rule_1.1.1.7
 
-- name: "NOTSCORED | 1.1.1.8 | PATCH | Remove FAT module"
+- name: "NOTSCORED | 1.1.1.7 | PATCH | Remove FAT module"
   modprobe:
       name: vfat
       state: absent
   when:
-      - ubuntu2004cis_rule_1_1_1_8
+      - ubuntu2004cis_rule_1_1_1_7
       - not ubuntu2004cis_skip_for_travis
   tags:
       - level2
@@ -256,7 +224,7 @@
       - patch
       - vfat
       - filesystems
-      - rule_1.1.1.8
+      - rule_1.1.1.7
 
 - name: "SCORED | 1.1.2 | PATCH | Ensure separate partition exists for /tmp | enable and start/restart tmp.mount"
   copy:
